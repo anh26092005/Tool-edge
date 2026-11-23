@@ -19,5 +19,3 @@ services:
         value: '0 7 * * *'
       - key: ACCOUNT_1_EMAIL
         sync: false
-      - key: ACCOUNT_1_PASSWORD
-        sync: false
