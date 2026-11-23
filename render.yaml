@@ -3,7 +3,7 @@ services:
     name: rewards-dashboard
     runtime: docker
     plan: free
-    healthCheckPath: /health
+    healthCheckPath: /dashboard
     envVars:
       - key: API_MODE
         value: 'true'
