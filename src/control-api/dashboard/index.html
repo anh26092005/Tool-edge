@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="vi">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#123c35" />
+        <title>Rewards — Trung tâm điều khiển</title>
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='12' fill='%23123c35'/%3E%3Cpath d='m20 8 4 8 9 1-6 7 1 9-8-4-8 4 1-9-6-7 9-1z' fill='%23cbf27a'/%3E%3C/svg%3E"
+        />
+        <link rel="stylesheet" href="/dashboard/styles.css" />
+        <script type="module" src="/dashboard/app.js"></script>
+    </head>
+    <body>
+        <svg class="icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <symbol id="i-grid" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="7" height="7" rx="2" />
+                <rect x="14" y="3" width="7" height="7" rx="2" />
+                <rect x="3" y="14" width="7" height="7" rx="2" />
+                <rect x="14" y="14" width="7" height="7" rx="2" />
+            </symbol>
+            <symbol id="i-users" viewBox="0 0 24 24">
+                <circle cx="9" cy="8" r="3" />
+                <path d="M3 21v-2a6 6 0 0 1 12 0v2M16 5a3 3 0 0 1 0 6m3 10v-2a6 6 0 0 0-3-5" />
+            </symbol>
+            <symbol id="i-sliders" viewBox="0 0 24 24">
+                <path d="M4 7h5m6 0h5M4 17h9m6 0h1" />
+                <circle cx="12" cy="7" r="3" />
+                <circle cx="16" cy="17" r="3" />
+            </symbol>
+            <symbol id="i-terminal" viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="16" rx="3" />
+                <path d="m7 9 3 3-3 3m6 0h4" />
+            </symbol>
+            <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z" /></symbol>
+            <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2" /></symbol>
+            <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></symbol>
+            <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" /></symbol>
+            <symbol id="i-refresh" viewBox="0 0 24 24">
+                <path d="M20 7v5h-5M4 17v-5h5" />
+                <path d="M6 7a7 7 0 0 1 12-1l2 3M4 15l2 3a7 7 0 0 0 12-1" />
+            </symbol>
+            <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6" /></symbol>
+            <symbol id="i-bolt" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-7z" /></symbol>
+            <symbol id="i-coin" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <path d="m12 6 2 4 4 .5-3 3 .7 4.5-3.7-2-3.7 2 .7-4.5-3-3L10 10z" />
+            </symbol>
+            <symbol id="i-search" viewBox="0 0 24 24">
+                <circle cx="10.5" cy="10.5" r="6.5" />
+                <path d="m16 16 5 5" />
+            </symbol>
+            <symbol id="i-monitor" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="13" rx="2" />
+                <path d="M8 21h8m-4-5v5" />
+            </symbol>
+            <symbol id="i-phone" viewBox="0 0 24 24">
+                <rect x="6" y="2" width="12" height="20" rx="3" />
+                <path d="M10 18h4" />
+            </symbol>
+            <symbol id="i-calendar" viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="16" rx="3" />
+                <path d="M7 3v4m10-4v4M3 11h18m-14 5h3" />
+            </symbol>
+            <symbol id="i-gift" viewBox="0 0 24 24">
+                <rect x="3" y="8" width="18" height="5" rx="1" />
+                <path d="M5 13v8h14v-8M12 8v13" />
+                <path d="M12 8H8a3 3 0 1 1 3-3zm0 0h4a3 3 0 1 0-3-3z" />
+            </symbol>
+            <symbol id="i-sparkles" viewBox="0 0 24 24">
+                <path d="m12 3 2.5 6.5L21 12l-6.5 2.5L12 21l-2.5-6.5L3 12l6.5-2.5zM20 2v4m-2-2h4" />
+            </symbol>
+            <symbol id="i-book" viewBox="0 0 24 24">
+                <path d="M12 6c-3-3-7-3-10-2v15c3-1 7-1 10 2 3-3 7-3 10-2V4c-3-1-7-1-10 2zm0 0v15" />
+            </symbol>
+            <symbol id="i-image" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8" cy="8" r="1" />
+                <path d="m3 17 5-5 4 4 4-6 5 7" />
+            </symbol>
+            <symbol id="i-login" viewBox="0 0 24 24">
+                <path d="M14 4h5a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-5M3 12h12m-5-5 5 5-5 5" />
+            </symbol>
+            <symbol id="i-info" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 11v6m0-10v1" />
+            </symbol>
+            <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6" /></symbol>
+            <symbol id="i-history" viewBox="0 0 24 24"><path d="M3 3v6h6M3 9a9 9 0 1 1 0 7m9-9v5l3 2" /></symbol>
+        </svg>
+
+        <aside class="sidebar">
+            <a class="brand" href="/dashboard/" aria-label="Rewards trang chủ">
+                <span class="brand-mark"
+                    ><svg class="icon"><use href="#i-sparkles" /></svg
+                ></span>
+                <span>rewards<span class="brand-dot">.</span><small>TRUNG TÂM ĐIỀU KHIỂN</small></span>
+            </a>
+            <div class="workspace-label">KHÔNG GIAN LÀM VIỆC</div>
+            <nav class="navigation" aria-label="Điều hướng chính">
+                <a class="nav-item active" href="#overview"
+                    ><svg class="icon"><use href="#i-grid" /></svg>Tổng quan<span class="nav-dot"></span
+                ></a>
+                <a class="nav-item" href="#accounts"
+                    ><svg class="icon"><use href="#i-users" /></svg>Tài khoản<span
+                        class="nav-count"
+                        id="nav-account-count"
+                        >—</span
+                    ></a
+                >
+                <a class="nav-item" href="#tasks"
+                    ><svg class="icon"><use href="#i-sliders" /></svg>Thiết lập nhiệm vụ</a
+                >
+                <a class="nav-item" href="#logs"
+                    ><svg class="icon"><use href="#i-terminal" /></svg>Nhật ký hoạt động</a
+                >
+                <a class="nav-item" href="#history"
+                    ><svg class="icon"><use href="#i-history" /></svg>Lịch sử chạy</a
+                >
+            </nav>
+            <div class="sidebar-note">
+                <span class="note-icon"
+                    ><svg class="icon"><use href="#i-bolt" /></svg
+                ></span>
+                <strong>Một nơi, nhiều tài khoản.</strong>
+                <p>Đăng nhập, chọn nhiệm vụ và theo dõi các luồng chạy cùng lúc.</p>
+                <span class="version-tag">MICROSOFT REWARDS · V5</span>
+            </div>
+            <div class="sidebar-footer">
+                <span class="connection-dot" id="connection-dot"></span><span id="connection-label">Đang kết nối…</span
+                ><small>Chạy trên máy của bạn</small>
+            </div>
+        </aside>
+
+        <main id="overview">
+            <header class="page-header">
+                <div>
+                    <div class="eyebrow">KHÔNG GIAN LÀM VIỆC <span>/</span> TỔNG QUAN</div>
+                    <h1>Trung tâm Rewards <span class="local-tag">LOCAL</span></h1>
+                    <p>Quản lý tài khoản và các nhiệm vụ hằng ngày, ngay tại đây.</p>
+                </div>
+                <div class="header-actions">
+                    <button
+                        class="button icon-button"
+                        id="refresh-button"
+                        title="Làm mới dữ liệu"
+                        aria-label="Làm mới dữ liệu"
+                    >
+                        <svg class="icon"><use href="#i-refresh" /></svg></button
+                    ><span class="status-badge neutral" id="global-status">Đang kết nối</span>
+                </div>
+            </header>
+
+            <div class="message-banner" id="connection-banner" role="status" hidden></div>
+            <section class="task-result" id="task-result" role="status" aria-live="polite" hidden>
+                <span class="task-result-symbol" id="task-result-symbol"></span>
+                <div>
+                    <h2 id="task-result-title"></h2>
+                    <p id="task-result-copy"></p>
+                    <small id="task-result-time"></small>
+                </div>
+            </section>
+            <section class="stat-grid" aria-label="Tổng quan tiến độ">
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Tài khoản</span
+                        ><span class="stat-icon green"
+                            ><svg class="icon"><use href="#i-users" /></svg
+                        ></span>
+                    </div>
+                    <strong id="stat-accounts">—</strong>
+                    <p id="stat-sessions">Đang đọc phiên đăng nhập</p>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Luồng đang hoạt động</span
+                        ><span class="stat-icon blue"
+                            ><svg class="icon"><use href="#i-bolt" /></svg
+                        ></span>
+                    </div>
+                    <strong id="stat-threads">—</strong>
+                    <p id="stat-thread-caption">Các tài khoản chạy đồng thời</p>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Điểm nhận trong lượt</span
+                        ><span class="stat-icon amber"
+                            ><svg class="icon"><use href="#i-coin" /></svg
+                        ></span>
+                    </div>
+                    <strong id="stat-points">—</strong>
+                    <p id="stat-points-caption">Chỉ hiển thị điểm được xác nhận</p>
+                </article>
+                <article class="stat-card">
+                    <div class="stat-top">
+                        <span>Nhiệm vụ hoàn tất</span
+                        ><span class="stat-icon purple"
+                            ><svg class="icon"><use href="#i-check" /></svg
+                        ></span>
+                    </div>
+                    <strong id="stat-tasks">—</strong>
+                    <p id="stat-tasks-caption">Kết quả của lượt chạy hiện tại</p>
+                </article>
+            </section>
+
+            <div class="workspace-grid">
+                <div class="primary-column">
+                    <section class="panel accounts-panel" id="accounts">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Tài khoản của bạn <span class="count-tag" id="account-count">0</span></h2>
+                                <p>Chọn tài khoản để chạy hoặc đăng nhập lưu phiên.</p>
+                            </div>
+                            <button class="button primary small" id="add-account-button">
+                                <svg class="icon"><use href="#i-plus" /></svg>Thêm tài khoản
+                            </button>
+                        </div>
+                        <div class="account-toolbar">
+                            <label class="search-box"
+                                ><svg class="icon"><use href="#i-search" /></svg
+                                ><input
+                                    id="account-search"
+                                    type="search"
+                                    placeholder="Tìm theo email…"
+                                    aria-label="Tìm tài khoản theo email" /></label
+                            ><span id="selection-summary">Chưa chọn tài khoản</span>
+                        </div>
+                        <div class="table-scroll">
+                            <table class="account-table">
+                                <thead>
+                                    <tr>
+                                        <th class="checkbox-cell">
+                                            <input
+                                                class="checkbox"
+                                                id="select-all-accounts"
+                                                type="checkbox"
+                                                aria-label="Chọn tất cả tài khoản"
+                                            />
+                                        </th>
+                                        <th>TÀI KHOẢN</th>
+                                        <th>PHIÊN ĐĂNG NHẬP</th>
+                                        <th>SỐ DƯ</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="account-rows">
+                                    <tr>
+                                        <td colspan="5" class="table-empty">Đang tải danh sách tài khoản…</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="panel-footnote">
+                            <svg class="icon"><use href="#i-info" /></svg
+                            ><span>Số dư là quan sát gần nhất. Phiên đã lưu có thể cần xác minh lại khi hết hạn.</span>
+                        </div>
+                    </section>
+
+                    <section class="panel tasks-panel" id="tasks">
+                        <div class="panel-heading">
+                            <div>
+                                <h2>Nhiệm vụ <span class="count-tag" id="worker-count">12 / 12</span></h2>
+                                <p>Bot thực hiện các nhiệm vụ được cung cấp cho từng tài khoản.</p>
+                            </div>
+                            <button class="text-button" id="toggle-all-workers">Bỏ chọn tất cả</button>
+                        </div>
+                        <div class="task-grid" id="worker-options"></div>
+                        <div class="panel-footnote">
+                            <svg class="icon"><use href="#i-sparkles" /></svg
+                            ><span
+                                >Hạn mức và ưu đãi phụ thuộc tài khoản, khu vực và ngày. Trạng thái chưa hoàn tất sẽ
+                                được ghi rõ trong kết quả.</span
+                            >
+                        </div>
+                    </section>
+                </div>
+
+                <aside class="run-column">
+                    <section class="panel run-panel">
+                        <div class="run-panel-heading">
+                            <span class="run-heading-icon"
+                                ><svg class="icon"><use href="#i-sliders" /></svg
+                            ></span>
+                            <div>
+                                <h2>Thiết lập lượt chạy</h2>
+                                <p>Sẵn sàng theo cách của bạn</p>
+                            </div>
+                        </div>
+                        <div class="run-settings">
+                            <label class="field-label" for="concurrency">Số luồng tài khoản <span>01 — 16</span></label>
+                            <div class="stepper">
+                                <button type="button" id="decrease-concurrency" aria-label="Giảm số luồng">−</button
+                                ><input
+                                    id="concurrency"
+                                    type="number"
+                                    min="1"
+                                    max="16"
+                                    value="2"
+                                    aria-describedby="concurrency-help"
+                                /><button type="button" id="increase-concurrency" aria-label="Tăng số luồng">+</button>
+                            </div>
+                            <p class="field-hint" id="concurrency-help">Tối đa 2 tài khoản chạy cùng lúc.</p>
+                            <label class="field-label mode-label" for="run-mode">Chế độ thực hiện</label>
+                            <select id="run-mode">
+                                <option value="browser">Trình duyệt · Browser</option>
+                                <option value="api">HTTP · API</option>
+                            </select>
+                            <p class="field-hint">Cả hai chế độ đều dùng phiên đăng nhập đã lưu.</p>
+                            <label class="switch-row"
+                                ><span><strong>Chạy ẩn cửa sổ</strong><small>Áp dụng khi làm nhiệm vụ</small></span
+                                ><input class="switch" id="headless" type="checkbox" checked
+                            /></label>
+                            <label class="switch-row"
+                                ><span
+                                    ><strong>Desktop + mobile song song</strong
+                                    ><small>Trong từng tài khoản</small></span
+                                ><input class="switch" id="parallel-searching" type="checkbox" checked
+                            /></label>
+                        </div>
+                        <div class="session-warning" id="session-warning" hidden>
+                            <strong id="session-warning-title">Cần hoàn tất đăng nhập</strong>
+                            <p id="session-warning-copy"></p>
+                            <button class="button small" id="complete-login-button">Hoàn tất đăng nhập</button>
+                        </div>
+                        <p class="run-wait-message" id="run-wait-message" hidden></p>
+                        <div class="run-summary">
+                            <div><span>Tài khoản đã chọn</span><strong id="run-selected-count">0</strong></div>
+                            <div><span>Loại nhiệm vụ đã bật</span><strong id="run-worker-count">12</strong></div>
+                        </div>
+                        <div class="run-buttons">
+                            <button class="button primary run-button" id="start-button" disabled>
+                                <svg class="icon"><use href="#i-play" /></svg>Chạy tài khoản đã chọn</button
+                            ><button class="button stop-button" id="stop-button" disabled>
+                                <svg class="icon"><use href="#i-stop" /></svg>Dừng lượt hiện tại
+                            </button>
+                        </div>
+                        <p class="run-footnote">
+                            Thiết lập được nhớ trên trình duyệt này và áp dụng cho lượt chạy bạn khởi động.
+                        </p>
+                    </section>
+                    <section class="login-progress panel" id="login-progress" hidden aria-live="polite"></section>
+                    <div class="quick-guide">
+                        <span class="eyebrow">BẮT ĐẦU TRONG 3 BƯỚC</span>
+                        <ol>
+                            <li><span>1</span>Thêm email Microsoft của bạn</li>
+                            <li><span>2</span>Đăng nhập trong cửa sổ mở ra</li>
+                            <li><span>3</span>Chọn tài khoản và bấm Chạy</li>
+                        </ol>
+                    </div>
+                </aside>
+            </div>
+
+            <section class="panel log-panel" id="logs">
+                <div class="panel-heading">
+                    <div>
+                        <h2>
+                            <svg class="icon"><use href="#i-terminal" /></svg>Nhật ký hoạt động
+                            <span class="live-tag"><span></span>LIVE</span>
+                        </h2>
+                        <p>Theo dõi đăng nhập, từng nhiệm vụ và kết quả thực tế.</p>
+                    </div>
+                    <div class="log-controls">
+                        <select id="log-level" aria-label="Lọc mức nhật ký">
+                            <option value="all">Tất cả mức độ</option>
+                            <option value="warn">Cảnh báo và lỗi</option>
+                            <option value="error">Chỉ lỗi</option></select
+                        ><label><input id="auto-scroll" type="checkbox" checked /> Tự cuộn</label>
+                    </div>
+                </div>
+                <div class="log-output" id="log-output" role="log" aria-label="Nhật ký chạy bot">
+                    <div class="log-empty">Nhật ký sẽ xuất hiện khi bạn đăng nhập hoặc bắt đầu lượt chạy.</div>
+                </div>
+            </section>
+
+            <section class="panel history-panel" id="history">
+                <div class="panel-heading">
+                    <div>
+                        <h2>Lịch sử gần đây</h2>
+                        <p>Kết quả được lưu trên máy, kể cả các lượt chưa hoàn tất.</p>
+                    </div>
+                    <svg class="icon muted"><use href="#i-history" /></svg>
+                </div>
+                <div id="history-rows" class="history-list"><p class="empty-copy">Đang tải lịch sử…</p></div>
+            </section>
+            <footer class="page-footer">
+                <span>Rewards Control <span>·</span> Không gian làm việc cục bộ</span
+                ><span id="last-updated">Đang đồng bộ dữ liệu…</span>
+            </footer>
+        </main>
+
+        <dialog id="account-dialog" class="modal">
+            <form id="account-form">
+                <div class="modal-heading">
+                    <div>
+                        <span class="modal-icon"
+                            ><svg class="icon"><use href="#i-users" /></svg
+                        ></span>
+                        <h2>Thêm tài khoản Microsoft</h2>
+                    </div>
+                    <button type="button" class="icon-button button" data-close="account-dialog" aria-label="Đóng">
+                        <svg class="icon"><use href="#i-x" /></svg>
+                    </button>
+                </div>
+                <p class="modal-copy">
+                    Thêm email, sau đó đăng nhập trực tiếp trong cửa sổ Microsoft được mở trên máy.
+                </p>
+                <label class="field-label" for="account-email">Địa chỉ email</label
+                ><input
+                    id="account-email"
+                    name="email"
+                    type="email"
+                    maxlength="320"
+                    placeholder="ban@outlook.com"
+                    required
+                    autocomplete="email"
+                />
+                <div class="login-info">
+                    <svg class="icon"><use href="#i-info" /></svg
+                    ><span
+                        >Hệ thống mở lần lượt phiên mobile và desktop. Hoàn tất đăng nhập và xác minh trong cả hai cửa
+                        sổ; phiên sẽ tự động được lưu.</span
+                    >
+                </div>
+                <p class="form-error" id="account-form-error" role="alert" hidden></p>
+                <div class="modal-actions">
+                    <button class="button" type="submit" value="save">Chỉ thêm tài khoản</button
+                    ><button class="button primary" type="submit" value="login">
+                        <svg class="icon"><use href="#i-login" /></svg>Thêm & đăng nhập
+                    </button>
+                </div>
+            </form>
+        </dialog>
+        <dialog id="detail-dialog" class="modal detail-modal">
+            <div class="modal-heading">
+                <h2 id="detail-title">Chi tiết tài khoản</h2>
+                <button type="button" class="button icon-button" data-close="detail-dialog" aria-label="Đóng">
+                    <svg class="icon"><use href="#i-x" /></svg>
+                </button>
+            </div>
+            <div id="detail-content"></div>
+        </dialog>
+        <dialog id="auth-dialog" class="modal">
+            <form id="auth-form">
+                <h2>Kết nối Control API</h2>
+                <p class="modal-copy">API này đang dùng token. Nhập API_TOKEN đã cấu hình để kết nối dashboard.</p>
+                <label class="field-label" for="api-token">API token</label
+                ><input id="api-token" type="password" autocomplete="off" required />
+                <p class="form-error" id="auth-error" hidden>Token không đúng hoặc kết nối chưa sẵn sàng.</p>
+                <div class="modal-actions"><button class="button primary" type="submit">Kết nối</button></div>
+            </form>
+        </dialog>
+        <div class="toast-region" id="toasts" aria-live="polite"></div>
+    </body>
+</html>

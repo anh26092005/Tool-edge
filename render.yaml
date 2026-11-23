@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: rewards-dashboard
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: API_MODE
+        value: 'true'
+      - key: API_HOST
+        value: '0.0.0.0'
+      - key: API_PORT
+        value: '10000'
+      - key: API_TOKEN
+        generateValue: true
+      - key: TZ
+        value: Asia/Ho_Chi_Minh
+      - key: CRON_SCHEDULE
+        value: '0 7 * * *'
+      - key: ACCOUNT_1_EMAIL
+        sync: false
+      - key: ACCOUNT_1_PASSWORD
+        sync: false
